@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+env/
+
+# Streamlit
+.streamlit/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models
+*.pth
+*.pt
+*.h5
+*.ckpt
+*.onnx
+
+# Data
+data/
+datasets/
+
+# OS
+.DS_Store
+Thumbs.db
