@@ -11,48 +11,8 @@ multi-modal ophthalmic image analysis fused with clinical tabular data.
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. (Optional) Place your model files in the project root or subdirectories:
-#    - Multi-modal image model: any .pth or .pt file
-#    - Tabular model:           any .pkl or .joblib file
-#    Both are auto-discovered — no filenames to configure.
-
-# 3. Launch
+# 2. Launch
 streamlit run app.py
-```
-
----
-
-## System Architecture
-
-```
-7 Corneal Images (CT_A, EC_A, EC_P, Elv_A, Elv_P, Sag_A, Sag_P)
-         │
-         ▼
-Multi-Modal Transformer (ResNet-18 encoders + cross-attention)
-         │
-         ├── Attention Maps (modality importance)
-         └── Grad-CAM Heatmaps (spatial explanations)
-
-1-Row Clinical CSV
-         │
-         ▼
-Tabular ML Pipeline (sklearn compatible: XGBoost / RF / LogReg)
-         │
-         └── Feature Importance
-
-         ┌────────────────────┐
-         │  Weighted Ensemble │
-         │  (configurable)    │
-         └────────────────────┘
-                  │
-                  ▼
-         Final Keratoconus Prediction
-                  │
-                  ▼
-         Gemini 1.5 Flash LLM
-                  │
-                  ▼
-         Clinical Report + Treatment Suggestions
 ```
 
 ---
