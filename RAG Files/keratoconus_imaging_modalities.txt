@@ -1,0 +1,40 @@
+KERATOCONUS IMAGING MODALITIES — TECHNICAL REFERENCE
+=====================================================
+
+## CT_A — CORNEAL THICKNESS MAP
+Full-thickness pachymetry. Normal central pachymetry 520-560 μm; thinnest point typically 500-560 μm.
+KC findings: thinnest point displaced inferiorly, minimum pachymetry < 500 μm (suspicious), < 460 μm (moderate-severe),
+steeper pachymetric gradient, focal thinning island. Pachymetry < 400 μm contraindicated for standard CXL.
+
+## EC_A — EPITHELIAL CURVATURE (ANTERIOR)
+Epithelium compensates for stromal irregularity. Normal: mean 52-55 μm centrally, uniform across 5mm.
+KC: "donut" pattern with central thinning < 42 μm, epithelial thickness range > 8 μm suspicious, > 14 μm strongly suggests KC.
+Most sensitive for subclinical KC — detects changes 2-3 years before topographic manifestation.
+
+## EC_P — EPITHELIAL CURVATURE (POSTERIOR)
+Posterior epithelial surface / Bowman's layer interface. KC shows irregular curvature, focal steepening at cone apex.
+Helps distinguish epithelial remodelling from true stromal ectasia. Useful in CL wearers.
+
+## Elv_A — ANTERIOR ELEVATION MAP
+Height above best-fit sphere (BFS). Normal: max elevation <= +12 μm. KC: focal "island" > +15 μm suspicious,
+> +20-25 μm likely KC, > +35 μm advanced KC. Characteristic inferior or central elevation island.
+
+## Elv_P — POSTERIOR ELEVATION MAP
+MOST SENSITIVE single tomographic parameter. Normal: <= +13 μm above BFS. KC: > +15 μm suspicious,
+> +20 μm likely, > +40 μm advanced. Posterior protrusion often precedes anterior elevation in subclinical KC.
+Change > 5 μm between visits = significant progression. Key for FFKC screening.
+
+## Sag_A — SAGITTAL CURVATURE (ANTERIOR)
+Standard axial curvature map in dioptres. Kmax normal < 47.2 D; suspicious 47.2-50 D; KC > 50 D.
+KC: inferior/paracentral steepening "island", I-S value > 1.8 D, SRAX > 21 degrees. Primary Kmax tracking map.
+
+## Sag_P — SAGITTAL CURVATURE (POSTERIOR)
+Posterior surface curvature. KC shows focal posterior steepening corresponding to cone.
+Often precedes anterior changes. Distinguishes KC from PMD (peripheral thinning disorder).
+
+## MULTI-MODAL ANALYSIS
+No single modality achieves 100% sensitivity. Combined analysis achieves > 95% sensitivity for manifest KC
+and > 75% for subclinical KC. AI attention weights indicate which modality drives each prediction:
+- High Elv_P weight: subclinical/early KC
+- High Sag_A + CT_A weight: established structural KC
+- High EC_A weight: epithelial compensation as primary driver

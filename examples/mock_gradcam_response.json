@@ -1,0 +1,11 @@
+{
+  "model": "model1",
+  "target_class": 1,
+  "gradcam": {
+    "overlay_b64": "<png base64>",
+    "heatmap_b64": "<png base64>",
+    "target_layer": "Conv2d"
+  },
+  "integrated_gradients": { "heatmap_b64": "<png base64 or omitted>" },
+  "attention_rollout": null
+}

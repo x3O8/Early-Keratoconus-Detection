@@ -1,0 +1,199 @@
+KERATOCONUS CLINICAL GUIDE — COMPREHENSIVE REFERENCE
+=====================================================
+
+## DEFINITION AND EPIDEMIOLOGY
+
+Keratoconus (KC) is a progressive, non-inflammatory ectatic corneal disorder characterised by stromal thinning
+and conical protrusion of the cornea, resulting in irregular myopia and astigmatism. It affects approximately
+1 in 375 to 1 in 2000 individuals in the general population, with onset typically in the second decade of life.
+The condition is bilateral but frequently asymmetric.
+
+Risk factors include: atopy, eye-rubbing, family history (8–10× increased risk in first-degree relatives),
+Down's syndrome, connective tissue disorders (Marfan's, Ehlers-Danlos), and contact lens wear.
+
+## PATHOPHYSIOLOGY
+
+KC is associated with decreased keratocyte density, disruption of the regular lamellar arrangement of collagen
+fibrils, and increased expression of degradative enzymes (matrix metalloproteinases, cathepsins). The weakened
+stroma under normal intraocular pressure and biomechanical stress leads to progressive ectasia. Oxidative stress
+and free-radical damage may play a role in stromal degradation.
+
+Biomechanically, KC corneas show reduced corneal hysteresis (CH) and corneal resistance factor (CRF) on
+Ocular Response Analyser (ORA), and abnormal Corvis ST parameters including reduced stiffness parameter A1.
+
+## CLASSIFICATION AND STAGING
+
+### Amsler-Krumeich Classification (classical):
+- Stage I: Central irregular astigmatism, eccentric corneal steepening; Kmax < 48 D
+- Stage II: Kmax 48–53 D; no central scarring; rigid contact lens (RCL) corrected VA ≥ 6/60
+- Stage III: Kmax 53–55 D; hard contact lens corrected VA < 6/60; average central K > 53 D
+- Stage IV: Kmax > 55 D; central scarring; contact lens corrected VA < 6/60; mean K > 55 D
+
+### ABCD Grading System (Pentacam):
+Grades anterior curvature (A), posterior elevation (B), minimum corneal thickness (C), and CDVA (D)
+independently from 0 (no ectasia) to 4 (severe) for each parameter.
+
+### Belin-Ambrosio Enhanced Ectasia Display (BAD-D):
+- BAD-D ≤ 1.6: Normal
+- BAD-D 1.6–2.6: Suspicious / forme fruste
+- BAD-D > 2.6: Keratoconus likely
+
+### Topographic Indices:
+- Kmax (maximum keratometry): Normal < 47.2 D; KC suspect 47.2–50 D; KC > 50 D
+- K-average (mean K): Normal < 45 D
+- ISV (Index of Surface Variance): measures asymmetry; normal < 37
+- IVA (Index of Vertical Asymmetry): normal < 0.28
+- KI (Keratoconus Index): > 1.07 suggests KC
+- CKI (Central Keratoconus Index): > 1.03 suggests KC
+- IHA (Index of Height Asymmetry): > 19 suspicious
+
+## CORNEAL TOMOGRAPHY FINDINGS
+
+### Anterior Elevation Map (Elv_A):
+Best-fit sphere (BFS) elevation: Normal ≤ +12 μm. KC shows characteristic "island" of anterior elevation
+typically > +15–20 μm above BFS, inferiorly displaced in typical KC, centrally in central KC.
+A focal anterior elevation > 15 μm at the thinnest point strongly suggests ectasia.
+
+### Posterior Elevation Map (Elv_P):
+More sensitive than anterior. Elevation > +15 μm above BFS considered suspicious.
+KC typically shows posterior elevation > +20–30 μm. The posterior surface protrudes before the anterior
+surface in early KC, making posterior elevation the most sensitive tomographic marker.
+
+### Corneal Thickness (CT_A) Map:
+Normal minimum pachymetry 500–580 μm. KC: minimum pachymetry often < 500 μm, frequently < 460 μm in
+moderate-to-advanced disease. Progressive inferior thinning with the thinnest point displaced inferiorly.
+Pachymetric progression index (PPI) and % thickness increase from thinnest point to periphery are elevated.
+
+### Sagittal Curvature Maps (Sag_A, Sag_P):
+Anterior sagittal (axial) map: characteristic inferior steepening "claw" pattern or central steepening.
+Normal flat-to-steep ratio is symmetric; KC shows asymmetric bow-tie or skewed axes.
+Sag_P: posterior sagittal curvature also steepened, consistent with posterior protrusion.
+
+### Epithelial Curvature Maps (EC_A, EC_P):
+Epithelium compensates for stromal irregularity — thin over the cone (negative epithelial thickness changes).
+OCT-based epithelial mapping: thinning at the cone apex often precedes stromal changes.
+"Doughnut" pattern (central thin zone) is pathognomonic for early keratoconus.
+
+## EARLY / SUBCLINICAL KERATOCONUS (FORME FRUSTE)
+
+Topographically normal fellow eye of confirmed KC patient. The most challenging diagnostic scenario.
+Criteria for forme fruste KC (FFKC):
+- Normal corneal topography (no classic inferior steepening)
+- One or more of: posterior elevation > 13 μm, minimum pachymetry < 490 μm, epithelial thinning pattern
+- Abnormal biomechanics (reduced CH, increased ABCD)
+- Genetic predisposition (positive family history)
+
+The Topographic Keratoconus Classification (TKC) scale by Rabinowitz and Rasheed is widely used:
+- TKC 0: Normal
+- TKC 1 / TKC 1-2: Forme fruste / suspicious
+- TKC 2 / TKC 3: Mild-moderate KC
+- TKC 4: Advanced KC
+
+## DIAGNOSIS
+
+### Corneal Topography (Placido disc):
+First-line screening. Detects surface irregularity. Cannot measure posterior surface or full-thickness.
+
+### Corneal Tomography (Scheimpflug imaging: Pentacam, Galilei):
+Full-thickness pachymetry, anterior + posterior elevation, curvature maps, indices.
+Gold standard for KC diagnosis and staging.
+
+### Optical Coherence Tomography (OCT):
+High-resolution corneal cross-section. Epithelial mapping. Bowman's layer integrity.
+
+### Corneal Biomechanics:
+ORA: Corneal Hysteresis < 9.4 mmHg and CRF < 9.6 mmHg suggest KC.
+Corvis ST: Stiffness parameter A1 (SP-A1) < 75.0 N/m suggests biomechanical weakening.
+
+### Wavefront / Aberrometry:
+Irregular higher-order aberrations (coma, trefoil) quantified. Total coma > 0.3 μm at 6 mm zone suspicious.
+
+## MANAGEMENT
+
+### Observation:
+Mild KC (Kmax < 50 D, pachymetry > 490 μm, stable refraction) with stable topography over 12–24 months.
+Spectacle correction: effective in early KC.
+Soft toric CLs: useful in mild KC.
+
+### Corneal Cross-Linking (CXL):
+Standard of care for progressive KC. Riboflavin-UVA photopolymerisation stiffens the stroma.
+Indications: documented progression (Kmax increase ≥ 1D/year, pachymetry decrease ≥ 2%/year), age < 35,
+pachymetry ≥ 400 μm at thinnest point (Dresden protocol).
+Accelerated CXL (9 mW/cm² × 10 min): equivalent efficacy to standard Dresden (3 mW/cm² × 30 min).
+Trans-epithelial (epi-on) CXL: avoids epithelial debridement, lower penetration depth, less established.
+Success: halts progression in ~90% of cases.
+
+### Contact Lens Fitting:
+- Rigid Gas Permeable (RGP): mask irregular astigmatism; first-line for moderate KC
+- Hybrid lenses: RGP centre with soft skirt; improved comfort
+- Scleral lenses: 16–22 mm diameter; vault the cornea; for moderate-to-advanced KC; best BCVA
+- Mini-scleral/corneo-scleral lenses: intermediate option
+- Piggyback system: soft lens beneath RGP
+
+### Surgical Options:
+Intrastromal Corneal Ring Segments (ICRS / Intacs / Keraring):
+- Flatten the cone by arc-shortening effect
+- Suitable for mild-moderate KC (Kmax 45–55 D, CDVA < 6/9, pachymetry ≥ 450 μm)
+- Often combined with CXL ("CXL plus")
+
+Topography-guided Photorefractive Keratectomy (topo-PRK):
+- Small ablation to regularise corneal surface, typically combined with accelerated CXL
+- "Athens Protocol" / "TCRB" (topography-guided CXL combined with PRK)
+
+Corneal Transplantation:
+- Deep Anterior Lamellar Keratoplasty (DALK): replaces stroma + epithelium, preserves endothelium; preferred
+- Penetrating Keratoplasty (PKP): full-thickness; reserved for failed DALK, significant scarring, poor DALK candidate
+- Indications: contact lens intolerance, CDVA < 6/18 despite best correction, Kmax > 60 D, central scarring
+
+### Contraindications:
+Refractive surgery (LASIK, PRK) is absolutely contraindicated in KC and FFKC — risk of post-LASIK ectasia.
+CXL contraindicated if pachymetry < 400 μm (risk of endothelial damage), active herpetic keratitis, pregnancy.
+
+## MONITORING
+
+Frequency:
+- Stable mild KC: 12-monthly topography + refraction
+- Post-CXL: 1, 3, 6, 12 months, then annually
+- Progressive KC: 4–6 monthly until stability confirmed over 2 consecutive visits
+
+Parameters to Monitor:
+- Kmax (maximum keratometry) — primary progression marker
+- Thinnest pachymetry (mm location + value)
+- BSCVA and BCVA
+- Posterior elevation max (BFS)
+- ISV, IVA, KI indices
+- BAD-D score (Pentacam Enhanced Ectasia)
+- Corneal hysteresis and CRF if ORA available
+
+Progression Criteria (trigger for intervention):
+- Kmax increase ≥ 1.0 D in 12 months
+- Minimum pachymetry decrease ≥ 2% (or ≥ 10 μm) in 12 months
+- BSCVA decrease of ≥ 2 Snellen lines
+- Manifest refraction spherical equivalent change > 0.5 D/year
+
+## KEY CLINICAL INDICES REFERENCE TABLE
+
+| Index          | Normal Range       | Suspicious         | KC Likely         |
+|----------------|--------------------|--------------------|-------------------|
+| Kmax           | < 47.2 D           | 47.2–50 D          | > 50 D            |
+| Min. Pachy     | > 500 μm           | 480–500 μm         | < 480 μm          |
+| Post. Elev.    | ≤ 13 μm (BFS)      | 13–20 μm           | > 20 μm           |
+| Ant. Elev.     | ≤ 12 μm (BFS)      | 12–15 μm           | > 15 μm           |
+| BAD-D          | ≤ 1.6              | 1.6–2.6            | > 2.6             |
+| ISV            | < 37               | 37–50              | > 50              |
+| IVA            | < 0.28             | 0.28–0.40          | > 0.40            |
+| CH (ORA)       | > 10.0 mmHg        | 9.4–10.0 mmHg      | < 9.4 mmHg        |
+
+## DIFFERENTIAL DIAGNOSIS
+
+- Pellucid marginal degeneration (PMD): inferior peripheral thinning, "butterfly" or "crab-claw" topographic pattern
+- Post-LASIK ectasia: iatrogenic ectasia following refractive surgery; history key
+- Keratoglobus: diffuse thinning of entire cornea; globe-like protrusion
+- Posterior keratoconus: localised posterior thinning, stable, non-progressive
+- Contact lens warpage: reverses after CL cessation; topography normalises
+
+## GENETICS
+
+Autosomal dominant with incomplete penetrance and variable expressivity most commonly described.
+Candidate genes: VSX1, COL4A3/4, DOCK9, FNDC3B, IL1B, TGFBI, LOX (lysyl oxidase — key for collagen cross-linking).
+Genetic testing not routine in clinical practice but helpful in family screening.

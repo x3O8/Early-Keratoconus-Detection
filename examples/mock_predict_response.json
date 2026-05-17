@@ -1,0 +1,47 @@
+{
+  "modalities_received": ["CT_A", "EC_A"],
+  "n_modalities_uploaded": 2,
+  "tabular_loaded": true,
+  "warnings": ["Missing modalities (zero-filled): EC_P, Elv_A, Elv_P, Sag_A, Sag_P"],
+  "image_model": {
+    "probs": [0.42, 0.58],
+    "predicted_label": "Keratoconus",
+    "confidence": 0.58,
+    "modality_weights": { "CT_A": 0.2, "EC_A": 0.18, "EC_P": 0.12, "Elv_A": 0.1, "Elv_P": 0.1, "Sag_A": 0.15, "Sag_P": 0.15 }
+  },
+  "tabular_model": {
+    "probs": [0.55, 0.45],
+    "predicted_label": "Normal",
+    "confidence": 0.55,
+    "feature_importance": { "feature_0": 0.12, "feature_1": 0.08 }
+  },
+  "ensemble": {
+    "probs": [0.46, 0.54],
+    "predicted_label": "Keratoconus",
+    "confidence": 0.54,
+    "keratoconus_prob": 0.54,
+    "normal_prob": 0.46,
+    "severity": "Borderline",
+    "image_weight": 0.65,
+    "tabular_weight": 0.35,
+    "image_contribution": 0.35,
+    "tabular_contribution": 0.19
+  },
+  "fusion": { "w_image": 0.65, "w_tabular": 0.35 },
+  "metrics": {
+    "fused_probs": [0.46, 0.54],
+    "predicted_class": 1,
+    "predicted_label": "Keratoconus",
+    "confidence": 0.54,
+    "uncertainty_normalized": 0.69,
+    "entropy": 0.69,
+    "model_agreement": 0.88,
+    "keratoconus_risk": 0.54,
+    "normal_prob": 0.46,
+    "image_contribution_kc": 0.35,
+    "tabular_contribution_kc": 0.19,
+    "severity": "Borderline",
+    "clinical": { "summary": "…", "bullets": ["…"], "severity_band": "Borderline" }
+  },
+  "previews": { "CT_A": "<base64 png>" }
+}

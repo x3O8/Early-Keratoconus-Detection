@@ -1,0 +1,222 @@
+/* -------------------------------------------------------------------
+   Keratoconus Detection — UI Styling
+   Dark clinical theme with glassmorphism cards, accent colours.
+   ------------------------------------------------------------------- */
+
+/* ---------- Google Font Import ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* ---------- Global Variables ---------- */
+:root {
+  --color-bg-primary: #0a0b12;
+  --color-bg-secondary: #111622;
+  --color-card-bg: rgba(22, 29, 46, 0.45);
+  --color-card-border: rgba(30, 45, 69, 0.8);
+  --color-accent-cyan: #00e5ff;
+  --color-accent-teal: #1de9b6;
+  --color-accent-red: #ff4b6e;
+  --color-accent-amber: #ffb300;
+  --color-text-primary: #e8edf5;
+  --color-text-secondary: #8896b0;
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.2);
+  --font-main: 'Roboto', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+/* ---------- Global Layout ---------- */
+html, body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.stApp { 
+  background-color: var(--color-bg-primary); 
+}
+
+/* Base typography standardisation */
+.stApp, .stApp p, .stApp span, .stApp div, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
+  font-family: var(--font-main) !important;
+}
+
+/* ---------- Sidebar ---------- */
+[data-testid="stSidebar"] {
+  background: linear-gradient(160deg, #0d1320 0%, #111a2e 100%);
+  border-right: 1px solid var(--color-card-border);
+  padding: 1rem;
+}
+
+/* ---------- Header ---------- */
+.hero-title {
+  font-family: var(--font-main) !important;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.2rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-main) !important;
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Cards ---------- */
+.kc-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.kc-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+.kc-card-accent {
+  background: linear-gradient(135deg, #0d1d30, #0a1520);
+  border: 1px solid rgba(0,229,255,0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Badges ---------- */
+.badge-positive {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background: linear-gradient(135deg, #ff4b6e22, #ff4b6e44);
+  border: 1px solid #ff4b6e88;
+  border-radius: 20px;
+  color: #ff4b6e;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-family: var(--font-main) !important;
+}
+.badge-negative {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background: linear-gradient(135deg, #1de9b622, #1de9b644);
+  border: 1px solid #1de9b688;
+  border-radius: 20px;
+  color: #1de9b6;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-family: var(--font-main) !important;
+}
+
+/* ---------- Metrics ---------- */
+.metric-label {
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-main) !important;
+}
+.metric-value {
+  font-family: var(--font-mono) !important;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-accent-cyan);
+}
+
+/* ---------- Tabs ---------- */
+.stTabs [data-baseweb="tab-list"] {
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+.stTabs [data-baseweb="tab"] {
+  border-radius: 7px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-family: var(--font-main) !important;
+  font-size: 0.88rem;
+}
+.stTabs [aria-selected="true"] {
+  background: var(--color-card-bg) !important;
+  color: var(--color-accent-cyan) !important;
+}
+
+/* ---------- Buttons ---------- */
+.stButton > button {
+  background: linear-gradient(135deg, #00e5ff22, #1de9b622);
+  border: 1px solid #00e5ff66;
+  color: var(--color-accent-cyan);
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: var(--font-main) !important;
+  transition: all 0.2s;
+}
+.stButton > button:hover {
+  border-color: var(--color-accent-cyan);
+  background: linear-gradient(135deg, #00e5ff33, #1de9b633);
+}
+
+/* ---------- Alerts & Warnings ---------- */
+.stAlert { border-radius: 8px; }
+.warning-banner {
+  background: #ffb30011;
+  border: 1px solid #ffb30044;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffb300;
+  font-size: 0.88rem;
+  margin: 0.5rem 0;
+  font-family: var(--font-main) !important;
+}
+.disclaimer {
+  background: #161d2e;
+  border-left: 3px solid var(--color-accent-cyan);
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-top: 1rem;
+  font-family: var(--font-main) !important;
+}
+
+/* ---------- Progress ---------- */
+.stProgress > div > div {
+  background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-teal));
+  border-radius: 4px;
+}
+
+/* ---------- Divider ---------- */
+.kc-divider {
+  border: none;
+  border-top: 1px solid var(--color-card-border);
+  margin: 1.5rem 0;
+}
+
+/* ---------- Section Labels ---------- */
+.section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-cyan);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-main) !important;
+}
+
+/* ---------- Monospace overrides ---------- */
+.mono,
+[style*="DM Mono"],
+code, pre {
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem;
+}

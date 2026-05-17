@@ -39,19 +39,44 @@ def render_explainability_tab():
     uploaded_images = st.session_state.get("uploaded_images", {})
 
     exp_tab1, exp_tab2, exp_tab3 = st.tabs([
-        "🌡️ Grad-CAM Heatmaps",
+        "👁️ Visual Explanations",
         "📡 Modality Importance",
         "📈 Feature Importance",
     ])
 
-    # ── Grad-CAM ─────────────────────────────────────────────────────────────
+    # ── Image Interpretability ────────────────────────────────────────────────
     with exp_tab1:
-        st.markdown('<div class="section-label">Gradient-weighted Class Activation Maps</div>', unsafe_allow_html=True)
-        st.markdown('<div style="color:#8896b0; font-size:0.82rem; margin-bottom:1rem;">Red/warm regions indicate areas most influential for the prediction. Each map corresponds to a corneal imaging modality.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-label">Visual Feature Attribution</div>', unsafe_allow_html=True)
+        
+        # Method Selector
+        method = st.radio(
+            "Interpretability Method",
+            ["Grad-CAM", "Integrated Gradients", "Attention Rollout"],
+            horizontal=True,
+            help="• Grad-CAM: Standard gradient-weighted class activation mapping.\n• Integrated Gradients: Mathematically-grounded path-integrated feature attributions from a zero baseline.\n• Attention Rollout: Propagated modality-attention weights down to spatial CNN features."
+        )
+
+        if method == "Grad-CAM":
+            maps = st.session_state.get("gradcam_maps", {})
+            method_desc = "Red/warm regions indicate areas most influential for the prediction. Each map corresponds to a corneal imaging modality."
+            caption_text = "Grad-CAM"
+            err_msg = "Grad-CAM map unavailable"
+        elif method == "Integrated Gradients":
+            maps = st.session_state.get("ig_maps", {})
+            method_desc = "Theoretically-grounded path attributions computed by integrating gradients from a black baseline. Reveals fine-grained diagnostic features."
+            caption_text = "Integrated Gradients"
+            err_msg = "Integrated Gradients map unavailable"
+        else: # Attention Rollout
+            maps = st.session_state.get("rollout_maps", {})
+            method_desc = "Propagates transformer attention weights across modalities down to spatial CNN features, revealing globally coordinated diagnostic regions."
+            caption_text = "Attention Rollout"
+            err_msg = "Attention Rollout map unavailable"
+
+        st.markdown(f'<div style="color:#8896b0; font-size:0.82rem; margin-bottom:1rem;">{method_desc}</div>', unsafe_allow_html=True)
 
         available_mods = [m for m in MODALITIES if uploaded_images.get(m) is not None]
         if not available_mods:
-            st.info("No images uploaded — Grad-CAM requires image inputs.")
+            st.info(f"No images uploaded — {method} requires image inputs.")
         else:
             cols_per_row = 4
             for row_start in range(0, len(available_mods), cols_per_row):
@@ -65,7 +90,7 @@ def render_explainability_tab():
                             {mod}
                         </div>""", unsafe_allow_html=True)
 
-                        cam = gradcam_maps.get(mod)
+                        cam = maps.get(mod) if maps else None
                         orig_tensor = uploaded_images.get(mod)
 
                         if cam is not None and orig_tensor is not None:
@@ -73,14 +98,14 @@ def render_explainability_tab():
                             from utils.inference import overlay_gradcam
                             orig_np = tensor_to_display(orig_tensor)
                             overlay = overlay_gradcam(orig_np, cam)
-                            st.image(overlay, use_container_width=True, caption="Grad-CAM")
+                            st.image(overlay, use_container_width=True, caption=caption_text)
                         elif orig_tensor is not None:
                             from utils.preprocessor import tensor_to_display
                             orig_np = tensor_to_display(orig_tensor)
                             st.image(orig_np, use_container_width=True, caption="Original")
-                            st.markdown('<div style="font-size:0.65rem; color:#8896b0; text-align:center;">CAM unavailable</div>', unsafe_allow_html=True)
+                            st.markdown(f'<div style="font-size:0.65rem; color:#8896b0; text-align:center;">{err_msg}</div>', unsafe_allow_html=True)
 
-        # CAM colour scale legend
+        # Attribution color scale legend
         st.markdown("""
         <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.75rem; font-size:0.75rem; color:#8896b0;">
             <span>Low influence</span>

@@ -1,0 +1,121 @@
+KERATOCONUS MANAGEMENT PROTOCOLS — CLINICAL DECISION GUIDE
+============================================================
+
+## SEVERITY-BASED MANAGEMENT ALGORITHM
+
+### NORMAL / NO KERATOCONUS (Probability < 20%)
+- No intervention required
+- Annual monitoring if any risk factors present (family history, atopy, eye-rubbing)
+- Counsel on risk factors; advise against eye-rubbing
+- Standard refractive correction (spectacles/soft CLs)
+
+### SUBCLINICAL / FORME FRUSTE (Probability 20-40%, Severity: Subclinical)
+- Topographically normal or borderline
+- Biannual tomography monitoring
+- Slit-lamp for signs of Fleischer ring, Vogt's striae
+- Genetic counselling if family history
+- Strict eye-rubbing cessation
+- Allergy management (antihistamines for atopy)
+- Treat amblyopia if present
+- ABSOLUTE contraindication to LASIK/refractive surgery
+
+### MILD KERATOCONUS (Probability 40-65%, Kmax 47-50 D)
+- Spectacles or soft toric CL for optical correction
+- Rigid Gas Permeable (RGP) lenses if spectacle BCVA inadequate
+- Tomography every 6 months; refraction every 6 months
+- CXL if progression documented (Kmax increase >= 1 D/year, pachymetry decrease >= 10 μm/year)
+- Minimum pachymetry criteria for CXL: >= 400 μm (standard), 350-400 μm (modified protocols)
+- Age < 35 years: lower threshold for CXL given longer disease course
+
+### MODERATE KERATOCONUS (Probability 65-85%, Kmax 50-55 D)
+- RGP contact lenses as primary optical correction
+- Scleral lenses if RGP intolerance (superior comfort, better vision)
+- Hybrid lenses as alternative
+- CXL strongly recommended if any progression or age < 35
+- Consider ICRS (Intacs/Keraring) for CL intolerance or to regularise cornea pre-CXL
+- Athens protocol (topo-PRK + CXL) if irregular astigmatism and adequate pachymetry
+- Monitoring: 4-6 monthly topography
+
+### SEVERE / ADVANCED KERATOCONUS (Probability > 85%, Kmax > 55 D)
+- Scleral lenses: primary optical strategy, often best achievable BCVA
+- CXL: halt progression even in advanced KC if pachymetry allows
+- DALK (Deep Anterior Lamellar Keratoplasty): first-choice transplant
+  - Preserves host endothelium, lower rejection risk than PKP
+  - Indicated: CDVA < 6/18 despite best CL, Kmax > 60 D, CL intolerance, central scarring without endothelial involvement
+- PKP (Penetrating Keratoplasty): full-thickness; reserved for DALK failure, significant endothelial involvement
+- Topography-guided PRK + CXL: may avoid surgery in some advanced cases
+- Monitoring: 3-4 monthly
+
+## CORNEAL CROSS-LINKING (CXL) PROTOCOLS
+
+### Standard Dresden Protocol:
+- Epithelial debridement (epi-off), 0.1% riboflavin in 20% dextran q2min x 30 min
+- UV-A 3 mW/cm² x 30 min (total fluence 5.4 J/cm²)
+- Minimum pachymetry: 400 μm de-epithelialised
+
+### Accelerated CXL:
+- 9 mW/cm² x 10 min; 18 mW/cm² x 5 min; 30 mW/cm² x 3 min
+- Same total fluence, equivalent long-term outcomes
+- Faster patient treatment, preferred in many centres
+
+### Trans-epithelial (Epi-on) CXL:
+- Preserves epithelium; reduced pain, faster recovery
+- Lower riboflavin penetration — less established, some studies show inferior efficacy
+- May be considered in thin corneas as alternative to standard protocol
+
+### CXL Outcomes:
+- Halts progression in ~90% of cases at 5 years
+- UCVA and BCVA often improve 1-2 lines within 12 months
+- Kmax typically reduces 1-2 D by 12 months
+- Haze in first 1-3 months: expected, resolves
+- Demarcation line at ~300 μm depth: marker of treatment depth
+
+## CONTACT LENS SELECTION GUIDE
+
+### RGP (Rigid Gas Permeable):
+- Indication: mild-moderate KC, regular corneal topography, adequate tear film
+- Lens design: aspheric, reverse geometry, multicurve back surface
+- Fitting: 3-point touch or apical clearance technique
+- Dk (oxygen transmissibility): > 100 Barrer preferred
+
+### Scleral Lenses (16-22 mm):
+- Indication: moderate-advanced KC, RGP intolerance, irregular cornea
+- Vault 200-400 μm over cornea; saline-filled reservoir
+- Eliminates corneal bearing; superior comfort
+- Consider when: central scarring, pellucid marginal degeneration coexistence
+
+### Hybrid Lenses:
+- RGP centre (5-6 mm) bonded to soft hydrogel skirt
+- Better comfort than RGP, better optics than soft
+- SynergEyes, UltraHealth FC designs
+
+## KEY CLINICAL THRESHOLDS FOR AI INTERPRETATION
+
+| Finding | Threshold | Action |
+|---------|-----------|--------|
+| Kmax | < 47.2 D | Normal |
+| Kmax | 47.2-50 D | Monitor 6 monthly |
+| Kmax | 50-55 D | CL fitting + CXL evaluation |
+| Kmax | > 55 D | Surgical candidacy assessment |
+| Min. Pachy | > 490 μm | Normal monitoring |
+| Min. Pachy | 400-490 μm | CXL eligible if progressive |
+| Min. Pachy | < 400 μm | Modified CXL protocol or transplant |
+| Post. Elevation | <= 13 μm | Normal |
+| Post. Elevation | 13-20 μm | Close monitoring, FFKC |
+| Post. Elevation | > 20 μm | KC confirmed |
+| KC Probability | < 20% | Normal |
+| KC Probability | 20-40% | Subclinical surveillance |
+| KC Probability | 40-65% | Mild KC management |
+| KC Probability | 65-85% | Moderate KC management |
+| KC Probability | > 85% | Severe KC management |
+
+## PATIENT COUNSELLING POINTS
+
+1. Keratoconus is NOT caused by wearing glasses or contact lenses
+2. Eye rubbing is the most important modifiable risk factor — absolute cessation essential
+3. Family members should be screened (first-degree relatives)
+4. CXL does not restore vision — it halts progression; contact lenses continue to be needed
+5. KC rarely leads to blindness with appropriate management
+6. Corneal transplant (if needed) has > 90% 10-year graft survival in KC
+7. Young patients (teens-20s) need more frequent monitoring as progression is faster
+8. Allergy management is crucial — antihistamines, mast cell stabilisers for atopic disease

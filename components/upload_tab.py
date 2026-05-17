@@ -176,6 +176,7 @@ def _run_full_analysis():
     from utils.inference import (
         run_image_inference, run_tabular_inference,
         ensemble_fusion, compute_gradcam,
+        compute_integrated_gradients, compute_attention_rollout,
     )
 
     model = st.session_state.get("image_model")
@@ -230,15 +231,30 @@ def _run_full_analysis():
         )
         st.session_state["ensemble_result"] = ensemble_result
 
-    # Grad-CAM
+    # Visual Explanations (Grad-CAM, Integrated Gradients, Attention Rollout)
     if model and images:
-        progress_bar.progress(0.75, text="Computing Grad-CAM…")
+        progress_bar.progress(0.70, text="Computing Grad-CAM…")
         try:
             target_class = st.session_state["ensemble_result"]["predicted_class"]
             gradcam_maps = compute_gradcam(model, images, dev, target_class)
             st.session_state["gradcam_maps"] = gradcam_maps
         except Exception as e:
             st.session_state["gradcam_maps"] = {}
+
+        progress_bar.progress(0.80, text="Computing Integrated Gradients…")
+        try:
+            target_class = st.session_state["ensemble_result"]["predicted_class"]
+            ig_maps = compute_integrated_gradients(model, images, dev, target_class)
+            st.session_state["ig_maps"] = ig_maps
+        except Exception as e:
+            st.session_state["ig_maps"] = {}
+
+        progress_bar.progress(0.90, text="Computing Attention Rollout…")
+        try:
+            rollout_maps = compute_attention_rollout(model, images, dev)
+            st.session_state["rollout_maps"] = rollout_maps
+        except Exception as e:
+            st.session_state["rollout_maps"] = {}
 
     progress_bar.progress(1.0, text="Done!")
     import time; time.sleep(0.4)

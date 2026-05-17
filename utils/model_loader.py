@@ -30,86 +30,142 @@ def get_device():
     return torch.device("cpu")
 
 
-# ────────────────────────────────────────────────────────────────────────────
-# Image Model Architecture
-# ────────────────────────────────────────────────────────────────────────────
+import torch.nn.functional as F
+from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 
-class ModalityEncoder(nn.Module):
-    """Single-modality ResNet encoder with optional attention."""
-    def __init__(self, embed_dim=256, pretrained=False):
+class DropPath(nn.Module):
+    def __init__(self, drop_prob: float = 0.0):
         super().__init__()
-        base = tv_models.resnet18(weights=None)
-        self.features = nn.Sequential(*list(base.children())[:-2])  # drop avgpool+fc
-        self.pool = nn.AdaptiveAvgPool2d(1)
-        self.proj = nn.Sequential(
-            nn.Linear(512, embed_dim),
-            nn.LayerNorm(embed_dim),
-            nn.GELU(),
-        )
+        self.drop_prob = drop_prob
 
     def forward(self, x):
-        feat = self.features(x)          # [B, 512, H, W]
-        pooled = self.pool(feat).flatten(1)
-        return self.proj(pooled), feat   # embed + spatial features for Grad-CAM
+        if not self.training or self.drop_prob == 0.0:
+            return x
+        keep_prob = 1 - self.drop_prob
+        shape = (x.shape[0], x.shape[1], 1)
+        random_tensor = torch.rand(shape, dtype=x.dtype, device=x.device)
+        random_tensor = torch.floor(random_tensor + keep_prob)
+        return x * random_tensor / keep_prob
+
+
+class MultiHeadModalityAttention(nn.Module):
+    def __init__(self, feature_dim: int, n_heads: int = 4, dropout: float = 0.1):
+        super().__init__()
+        assert feature_dim % n_heads == 0
+        self.n_heads    = n_heads
+        self.head_dim   = feature_dim // n_heads
+        self.scale      = self.head_dim ** -0.5
+
+        self.q_proj   = nn.Linear(feature_dim, feature_dim, bias=False)
+        self.k_proj   = nn.Linear(feature_dim, feature_dim, bias=False)
+        self.v_proj   = nn.Linear(feature_dim, feature_dim, bias=False)
+        self.out_proj = nn.Linear(feature_dim, feature_dim, bias=False)
+
+        self.attn_drop = nn.Dropout(dropout)
+        self.norm      = nn.LayerNorm(feature_dim)
+        self.modality_gate = nn.Parameter(torch.ones(1, 7, 1))
+
+    def forward(self, x):
+        B, M, D = x.shape
+        x_norm = self.norm(x)
+
+        Q = self.q_proj(x_norm)
+        K = self.k_proj(x_norm)
+        V = self.v_proj(x_norm)
+
+        def split_heads(t):
+            t = t.view(B, M, self.n_heads, self.head_dim)
+            return t.permute(0, 2, 1, 3)
+
+        Q, K, V = split_heads(Q), split_heads(K), split_heads(V)
+
+        attn = torch.matmul(Q, K.transpose(-2, -1)) * self.scale
+        attn_probs = F.softmax(attn, dim=-1)
+        self.last_attn_probs = attn_probs.detach()
+        attn_drop = self.attn_drop(attn_probs)
+
+        out = torch.matmul(attn_drop, V)
+        out = out.permute(0, 2, 1, 3).contiguous().view(B, M, D)
+        out = self.out_proj(out)
+
+        out = x + out
+        gate = torch.sigmoid(self.modality_gate)
+        out  = out * gate
+
+        attn_weights = attn_probs.mean(dim=1).mean(dim=1)
+        return out.mean(dim=1), attn_weights
 
 
 class MultiModalKeratoconusModel(nn.Module):
-    """
-    Processes 7 ophthalmic modalities independently, then fuses via
-    cross-modal attention and classifies.
-    """
-    def __init__(self, num_modalities=7, embed_dim=256, num_heads=4, num_classes=2):
+    def __init__(self, num_classes: int = 2, num_modalities: int = 7,
+                 proj_dim: int = 320, dropout: float = 0.3,
+                 drop_path_rate: float = 0.1, n_attn_heads: int = 4):
         super().__init__()
         self.num_modalities = num_modalities
-        self.embed_dim = embed_dim
+        self.proj_dim = proj_dim
 
-        # Per-modality encoders
-        self.encoders = nn.ModuleList([
-            ModalityEncoder(embed_dim) for _ in range(num_modalities)
-        ])
+        base = efficientnet_b0(weights=None)
+        self.feature_dim   = base.classifier[1].in_features  # 1280
+        self.backbone      = base.features
+        self.backbone_pool = nn.AdaptiveAvgPool2d(1)
 
-        # Cross-modal transformer
-        encoder_layer = nn.TransformerEncoderLayer(
-            d_model=embed_dim, nhead=num_heads, dim_feedforward=512,
-            dropout=0.1, batch_first=True, norm_first=True,
-        )
-        self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=2)
-
-        # Modality-level attention weights (for importance visualization)
-        self.modality_attn = nn.Linear(embed_dim, 1)
-
-        # Classifier head
-        self.classifier = nn.Sequential(
-            nn.Dropout(0.3),
-            nn.Linear(embed_dim, 128),
+        self.proj = nn.Sequential(
+            nn.LayerNorm(self.feature_dim),
+            nn.Linear(self.feature_dim, proj_dim),
             nn.GELU(),
-            nn.Dropout(0.2),
-            nn.Linear(128, num_classes),
+            nn.Dropout(dropout * 0.5),
         )
+
+        self.drop_path = DropPath(drop_prob=drop_path_rate)
+
+        self.attention_fusion = MultiHeadModalityAttention(
+            feature_dim=proj_dim,
+            n_heads=n_attn_heads,
+            dropout=0.1
+        )
+
+        self.head = nn.Sequential(
+            nn.LayerNorm(proj_dim),
+            nn.Linear(proj_dim, proj_dim // 2),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(proj_dim // 2, num_classes)
+        )
+
+        self._init_weights()
+
+    def _init_weights(self):
+        for module in [self.proj, self.head, self.attention_fusion]:
+            for m in module.modules():
+                if isinstance(m, nn.Linear):
+                    nn.init.trunc_normal_(m.weight, std=0.02)
+                    if m.bias is not None:
+                        nn.init.zeros_(m.bias)
+                elif isinstance(m, nn.LayerNorm):
+                    nn.init.ones_(m.weight)
+                    nn.init.zeros_(m.bias)
 
     def forward(self, images: list):
-        """
-        images: list of tensors [B, 3, 224, 224], one per modality.
-        Returns: logits, modality_weights, spatial_features (for Grad-CAM).
-        """
-        embeds = []
+        # images: list of tensors [B, 3, 224, 224]
+        x = torch.stack(images, dim=1) # [B, 7, 3, 224, 224]
+        B, M, C, H, W = x.shape
+        
         spatial_feats = []
-        for i, img in enumerate(images):
-            embed, spatial = self.encoders[i](img)
-            embeds.append(embed.unsqueeze(1))   # [B, 1, D]
-            spatial_feats.append(spatial)
-
-        tokens = torch.cat(embeds, dim=1)       # [B, M, D]
-        tokens = self.transformer(tokens)        # [B, M, D]
-
-        # Soft attention over modalities
-        attn_scores = self.modality_attn(tokens).squeeze(-1)   # [B, M]
-        attn_weights = torch.softmax(attn_scores, dim=-1)      # [B, M]
-
-        # Weighted sum
-        context = (tokens * attn_weights.unsqueeze(-1)).sum(dim=1)  # [B, D]
-        logits = self.classifier(context)
-
+        for i in range(M):
+            feat = self.backbone(x[:, i])
+            spatial_feats.append(feat)
+            
+        feats = torch.stack(spatial_feats, dim=1) # [B, 7, 1280, 7, 7]
+        feats_flat = feats.view(B * M, self.feature_dim, feats.shape[-2], feats.shape[-1])
+        pooled = self.backbone_pool(feats_flat).flatten(1)
+        
+        proj = self.proj(pooled)
+        proj = proj.view(B, M, self.proj_dim)
+        
+        dropped = self.drop_path(proj)
+        fused, attn_weights = self.attention_fusion(dropped)
+        logits = self.head(fused)
+        
         return logits, attn_weights, spatial_feats
 
 
@@ -133,8 +189,8 @@ def load_image_model():
     device = get_device()
     model = MultiModalKeratoconusModel(
         num_modalities=NUM_MODALITIES,
-        embed_dim=256,
-        num_heads=4,
+        proj_dim=320,
+        n_attn_heads=4,
         num_classes=2,
     ).to(device)
     model.eval()
